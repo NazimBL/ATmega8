@@ -1,5 +1,5 @@
 void Setup();
-void writeDAC(unsigned dac);
+void writeDAC(unsigned dac,unsigned channel);
 
 char lowB,highB;
 
@@ -9,7 +9,7 @@ Setup();
 
 while(1){
 
-         writeDAC(2000);      
+         writeDAC(2000,1);      
          Delay_ms(500);
 
 }
@@ -29,6 +29,7 @@ void writeDAC(unsigned dac){
       highB=dac >> 8;
       //add command word
       highB+=16;
+      highB+=(channel*128);  
       PORTB0_bit=0;
       SPI1_Write(highB);
       SPI1_Write(lowB);
