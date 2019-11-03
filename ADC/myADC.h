@@ -26,6 +26,4 @@ int ADC_Read(char channel)
 	return(Ain);			/* Return digital value*/
 }
 
-
-
 #endif // MYADC_H_INCLUDED
