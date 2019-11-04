@@ -1,3 +1,9 @@
+/*
+Nazim BL
+mikroC PRO for arm
+Photovoltaic emulator
+*/
+
 // changefrom 1 to 4 depending on Slave
 const char INDEX='0';
 
@@ -42,8 +48,7 @@ void main() {
 Setup();
 
 while(1){
-        
-        
+                
            //read Voltage and multiply by gain
            VREF=ADC_Read(3);
            VREF*=VOC;
@@ -68,11 +73,11 @@ while(1){
              UART1_Write_Text(txt);
              UART1_Write('\n'); 
 			
-			 //2800 represents max current 	
-			 dac=IREF/ISC;
-			 dac*=2800;
-           
-            //write Iref  , channel 1
+	    //2800 represents max current 	
+	     dac=IREF/ISC;
+	     dac*=2800;
+            
+	    //write Iref  , channel 1
             writeDAC((unsigned)dac,1);
            //write max voltage == VOC   , channel 0
             writeDAC(4092,0);
@@ -80,15 +85,15 @@ while(1){
        
 		 /*
 		 Test voltage, should find Half VOC
-         writeDAC(2046,0);
-         writeDAC(4092,1);
+         		writeDAC(2046,0);
+         		writeDAC(4092,1);
 		 */
 		 
 		 /*
-         Test current
-         writeDAC(1000,1);
-         writeDAC(4092,0);
-         */    
+        	 Test current
+         		writeDAC(1000,1);
+        		 writeDAC(4092,0);
+        	 */    
        }
 }
 
